@@ -6,6 +6,7 @@ import { translateText } from './services/geminiService';
 import { Sparkles, Menu, X, Activity, Bitcoin, Gamepad2, Users, Code, BrainCircuit, Heart, Sprout, GraduationCap, Palette, Trophy, Music, Ticket, ShieldCheck, Banknote, Layout, Zap } from 'lucide-react';
 import { CountUp, SpotlightButton } from './components/UI';
 import { TiltCard, TiltTicketCard, Step3Visual, CreatorsCommunitiesSection, FooterSection } from './components/PageSections';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Initial Content
 const INITIAL_HEADLINE = "Your Creative Work, Trading\non a Tokenized Market";
@@ -643,6 +644,7 @@ const App = () => {
             </motion.div>
         )}
       </AnimatePresence>
+      <SpeedInsights />
     </div>
   );
 };
