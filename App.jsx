@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ThreeBackground } from './components/ThreeBackground';
 import { FloatingUI } from './components/FloatingUI';
 import { translateText } from './services/geminiService';
@@ -643,6 +644,9 @@ const App = () => {
             </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 };
