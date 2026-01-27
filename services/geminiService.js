@@ -8,25 +8,23 @@ export const translateText = async (
   subheadline,
   targetLanguage
 ) => {
+  if (!ai) {
+    console.warn("Translation disabled: missing VITE_GEMINI_API_KEY");
+    return { headline, subheadline };
+  }
+  
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `Translate the following text to ${targetLanguage}. Maintain the punchy, marketing tone.
-      
-      Headline: "${headline}"
-      Subheadline: "${subheadline}"`,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            headline: { type: Type.STRING },
-            subheadline: { type: Type.STRING },
-          },
-          required: ["headline", "subheadline"],
-        },
-      },
+    const model = ai.getGenerativeModel({
+      model: "gemini-1.5-flash",
     });
+
+    const generationConfig = {
+      temperature: 1,
+      topP: 0.95,
+      topK: 64,
+      maxOutputTokens: 8192,
+      responseMimeType: "application/json",
+    };
 
     const jsonText = response.text;
     if (!jsonText) {
