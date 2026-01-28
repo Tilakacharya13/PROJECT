@@ -1,0 +1,15 @@
+/* Minimal global styles to satisfy build and provide base layout */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background-color: #050505;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Utility: hide scrollbar for aesthetic parity with index.html */
+::-webkit-scrollbar { width: 0px; background: transparent; }
